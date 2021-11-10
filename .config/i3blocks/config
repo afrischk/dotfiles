@@ -1,0 +1,74 @@
+align=center
+separator=false
+color=#f8f8f2
+separator_block_width=15
+markup=pango
+
+#[wifi]
+#command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%i%\n", int($3 * 100 / 70) }'
+#instance=wlp11s0f3u1
+#interval=5
+#label=<span color="#f1fa8c">| </span>
+
+#[lan-ip6]
+#command=ip -6 addr show enp4s0 | grep -Po 'inet6 \K[\da-z:]+\/[\d]{2}' | head -n 1
+#interval=5
+#label=<span color="#f1fa8c">| </span>
+
+[arch-update]
+command=$SCRIPT_DIR/arch-update/arch-update
+interval=once
+label=<span color="#ff5555"> </span>
+
+#[lan-ip4]
+#command=ip -4 addr show enp4s0 | grep -Po 'inet \K[\d.]+\/[\d]{2}'
+#interval=5
+#label=<span color="#f1fa8c"> </span>
+
+#[home]
+#command=df -h /home| awk '$NF=="/"{printf "%d/%dGi (%s)\n", $3,$2,$5}'
+#interval=3
+#label=<span color="#ff79c6"> </span>
+
+[root]
+command=df -h / | awk '$NF=="/"{printf "%d/%dGi (%s)\n", $3,$2,$5}'
+interval=3
+label=<span color="#bd93f9"> </span>
+
+#[gpu-load]
+#command=nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{ printf "%02i<span color=\"#8be9fd\"><b>%</b></span>\n", $0}'
+#label=<span color="#8be9fd"><b>GPU: </b></span>
+#interval=2
+
+#[gpu-temperature]
+#command=nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | awk '{ printf "%i<span color=\"#8be9fd\">糖 </span>\n", $0}'
+#interval=2
+
+#[cpu_load]
+#command=top -bn1 | grep load | awk '{printf "%.2f%\n", $(NF-2)}'
+#interval=2
+#label=<span color="#50fa7b"> </span>
+
+#[cpu_temperature]
+#command=sensors | awk '{ if ($1 == "CPU" && $2 == "Temperature:") { gsub(/[+°C]/, "") ; printf "%i<span color=\"#50fa7b\">糖 </span>\n", $3 } }'
+#interval=2
+
+[memory]
+command=free -m | awk 'NR==2{printf "%s/%sMi (%.2f%%)\n", $3,$2,$3*100/$2 }'
+interval=2
+label=<span color="#f1fa8c"> </span>
+
+[battery]
+command=$SCRIPT_DIR/battery2/battery2
+interval=30
+markup=pango
+
+[time]
+command=TZ=":Europe/Berlin" date '+%I:%M %Z'
+interval=1
+label=<span color="#bd93f9"> </span>
+
+[date]
+command=date '+%Y %d %B %A'
+interval=60
+label=<span color="#8be9fd"> </span>
