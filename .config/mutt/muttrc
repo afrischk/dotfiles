@@ -11,6 +11,11 @@ set edit_headers=yes
 set imap_check_subscribed
 set sidebar_visible=no
 
+# mailcap
+set mailcap_path=~/.mutt/mailcap
+auto_view text/html
+
+# gmail access
 source "gpg -dq ~/.config/mutt/gmail.gpg |"
 
 # bindings
