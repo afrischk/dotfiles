@@ -10,6 +10,7 @@ set send_charset="utf-8"
 set edit_headers=yes
 set imap_check_subscribed
 set sidebar_visible=no
+set editor=vim
 
 # mailcap
 set mailcap_path=~/.mutt/mailcap
@@ -17,6 +18,9 @@ auto_view text/html
 
 # gmail access
 source "gpg -dq ~/.config/mutt/gmail.gpg |"
+
+# sidebar
+source ~/.config/mutt/muttrc-sidebar
 
 # bindings
 bind index,pager B sidebar-toggle-visible
