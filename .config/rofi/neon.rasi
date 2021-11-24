@@ -1,0 +1,94 @@
+* {
+  dark-purple:               #9900ff;
+  dark-purple-transparency:  #9900ff80;
+  light-purple:              #9d00ff;
+  pink:                      #ff00ff;
+  light-blue:                #00ffff;
+  dark-blue:                 #0033ff;
+  white:                     #ffffff;
+  black:                     #000000;
+
+  spacing: 0;
+  background-color: transparent;
+
+  font: "DejaVuSansMono Nerd Font Mono 18";
+  text-color: @text;
+}
+
+window {
+  transparency: "real";
+  fullscreen: true;
+  background-color: @dark-purple-transparency;
+}
+
+mainbox {
+  margin: 30% 30%;
+  border: 2px;
+  border-color: @light-blue;
+  background-color: @dark-purple;
+}
+
+inputbar {
+  padding: 20px 0px 20px 0px;
+  background-color: @pink;
+  border: 0px 0px 2px 0px;
+  border-color: @light-blue;
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+  text-color: @white;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ">";
+  text-color: @white;
+}
+
+/*entry {
+  margin: 20px 0px 20px 0px;
+}*/
+
+listview {
+  spacing: 5px;
+  dynamic: true;
+  scrollbar: false;
+}
+
+element {
+  padding: 5px;
+  text-color: @black;
+  //highlight: bold #95ee8f; /* green */
+  //border-radius: 3px;
+}
+
+element selected {
+  background-color: @pink;
+}
+
+element-text selected {
+  color: @white;
+}
+
+//element urgent, element selected urgent {
+// text-color: @red;
+//}
+
+//element active, element selected active {
+//  text-color: @purple;
+//}
+
+//message {
+//  padding: 5px;
+//  border-radius: 3px;
+//  background-color: @emphasis;
+//  border: 1px;
+//  border-color: @cyan;
+//}
+
+//button selected {
+//  padding: 5px;
+//  border-radius: 3px;
+//  background-color: @emphasis;
+//}

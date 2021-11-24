@@ -129,3 +129,4 @@ c.url.start_pages = [ 'https://www.google.com' ]
 c.fonts.default_family = 'DejaVuSansMono Nerd Font Mono'
 c.fonts.default_size = '18pt'
 c.zoom.default = '150%'
+c.downloads.location.directory = '~/downloads'
