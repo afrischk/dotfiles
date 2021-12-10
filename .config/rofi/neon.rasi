@@ -39,9 +39,13 @@ prompt {
   text-color: @white;
 }
 
+entry {
+  text-color: @white;
+}
+
 textbox-prompt-colon {
   expand: false;
-  str: ">";
+  str: " > ";
   text-color: @white;
 }
 
