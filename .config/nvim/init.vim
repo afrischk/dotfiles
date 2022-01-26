@@ -1,9 +1,13 @@
 source ~/.config/nvim/vim-plug/plugins.vim
 call deoplete#enable()
 
-lua require('modules/eviline')
-"lua require('modules/spaceline')
+let mapleader=' '
 
+lua require('modules/eviline')
+lua require('modules/project')
+lua require('modules/neogit')
+lua require('modules/whichkey')
+lua require('dbg/init')
 
 " editor
 syntax on
@@ -11,24 +15,12 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nu
-
-let mapleader=' '
+"Map Neovim yank's buffer to your clipboard buffer
+set clipboard+=unnamedplus
 
 colorscheme tokyonight
-"colorscheme neospace-theme
 set termguicolors
 set background=dark
-"set noshowmode
-"set noruler
-"set laststatus=0
-
-
-" airline theme
-"let g:airline_theme='neospace'
-" make airline faster
-"let ttimeoutlen = 10
-"let g:airline#extensions#ale#enabled = 1
-
 
 " shortcuts
 cnoreabbrev W! w!
@@ -50,12 +42,23 @@ noremap <S-tab> gT
 let g:vimtex_view_general_viewer = 'mupdf'
 "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
-" NERDTree
-noremap <leader>nt :NERDTreeToggle<cr>
-noremap <leader>nf :NERDTreeFind<cr>
-noremap <leader>n<tab> :NERDTreeFocus<cr>
+" NvimTree
+noremap <leader>nt :NvimTreeToggle<cr>
+noremap <leader>nf :NvimTreeFindFile<cr>
+noremap <leader>n<tab> :NvimTreeFocus<cr>
+
+" projects
+noremap <leader>pl :Telescope projects<cr>
 
 " dart & flutter
+noremap <leader>ff :DartFmt<cr>
+noremap <leader>fr :FlutterRun<cr>
+noremap <leader>fd :FlutterDevices<cr>
+
+" git
+noremap <leader>g :Neogit<cr>
+
+" code naviation
 "let g:lsc_auto_map = v:true
 let g:lsc_auto_map = {
   \ 'GoToDefinition': '<leader>gd',
@@ -72,7 +75,3 @@ let g:lsc_auto_map = {
   \ 'SignatureHelp': '<leader>gm',
   \ 'Completion': 'completefunc',
 \}
-noremap <leader>df :DartFmt<cr>
-noremap <leader>fr :FlutterRun<cr>
-noremap <leader>fd :FlutterDevices<cr>
-

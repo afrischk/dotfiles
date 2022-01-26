@@ -7,26 +7,43 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-  " Better Syntax Support
+  " theme
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+  " better syntax support
   Plug 'sheerun/vim-polyglot'
 
-  " File Explorer
-  Plug 'scrooloose/NERDTree'
-
-  " Auto pairs for '(' '[' '{'
+  " auto pairs for '(' '[' '{'
   Plug 'jiangmiao/auto-pairs'
 
-  " code completion
-  "Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-  " 9000+ Snippets
-  "Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-  " 3rd party
-  "Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
-   
+  " highlight chars for movements
+  Plug 'unblevable/quick-scope'
+
+  " delete trailing whitespace
+  Plug 'bronson/vim-trailing-whitespace'
+
+  " custom key mappings
+  Plug 'folke/which-key.nvim'
+
+  " File Explorer
+  " Plug 'scrooloose/NERDTree'
+  Plug 'kyazdani42/nvim-tree.lua'
+
+  " easy lua key mapping
+  Plug 'b0o/mapx.nvim'
+
+  " prject management
+  Plug 'ahmedkhalf/project.nvim'
+
+  " git
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'TimUntersberger/neogit'
+  Plug 'sindrets/diffview.nvim'
+
   " Latex support
   Plug 'lervag/vimtex'
 
-  " deoplete
+  " code completion
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   else
@@ -35,29 +52,32 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 
-  " Ultisnip
-  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-  Plug 'bronson/vim-trailing-whitespace'
+  " code snippets
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+
+  " language server communication
+  Plug 'natebosch/vim-lsc'
 
   " dart/flutter
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'thosakwe/vim-flutter'
-  Plug 'natebosch/vim-lsc'
   Plug 'natebosch/vim-lsc-dart'
-  
+
   " galaxyline
   Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-  " If you want to display icons, then use one of these plugins:
-  Plug 'kyazdani42/nvim-web-devicons' " lua
-  "Plug 'Avimitin/nerd-galaxyline'
-  "Plug 'Avimitin/neovim-deus'
-   
-  " theme
-  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-  "Plug 'lukelarsen/neospace-theme'
+  Plug 'kyazdani42/nvim-web-devicons'
+
+
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+
+  " debug plugins
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'nvim-telescope/telescope-dap.nvim'
+  Plug 'rcarriga/nvim-dap-ui'
+  Plug 'theHamsta/nvim-dap-virtual-text'
+  Plug 'Pocco81/DAPInstall.nvim'
 
 call plug#end()
 
-"require("coq_3p") {
-"  { src = "vimtex", short_name = "vTEX" }
-"}
