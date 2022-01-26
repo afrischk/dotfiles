@@ -31,11 +31,12 @@ dap_install.config(
 -- keymappings
 require'mapx'.setup{ global = true }
 
-nnoremap("<leader>dc", ":lua require('dap').continue()<cr><cr>")
-nnoremap("<leader>dn", ":lua require('dap').step_over()<cr>")
-nnoremap("<leader>dni", ":lua require('dap').step_into()<cr>")
-nnoremap("<leader>dso", ":lua require('dap').step_out()<cr>")
+nnoremap("<leader>d5", ":lua require('dap').continue()<cr><cr>")
+nnoremap("<leader>d6", ":lua require('dap').step_over()<cr>")
+nnoremap("<leader>d7", ":lua require('dap').step_into()<cr>")
+nnoremap("<leader>d8", ":lua require('dap').step_out()<cr>")
 nnoremap("<leader>db", ":lua require('dap').toggle_breakpoint()<cr>")
+nnoremap("<leader>dc", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
 
 nnoremap("<leader>dvs", ":lua require('dap.ui.variables').scopes()<cr>")
 nnoremap("<leader>dvh", ":lua require('dap.ui.variables').hover()<cr>")
@@ -43,7 +44,6 @@ vnoremap("<leader>dvv", ":lua require('dap.ui.variables').visual_hover()<cr>")
 
 nnoremap("<leader>dwh", ":lua require('dap.ui.widgets').hover()<cr>")
 nnoremap("<leader>dws", ":lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<cr>")
-nnoremap("<leader>dbc", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
 --nnoremap("<leader>dsbm", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
 --nnoremap("<leader>dro", ":lua require('dap').repl.open()<cr>")
 --nnoremap("<leader>drl", ":lua require('dap').repl.run_last()<cr>")
