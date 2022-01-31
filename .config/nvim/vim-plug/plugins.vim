@@ -44,20 +44,18 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'lervag/vimtex'
 
   " code completion
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+  Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+  Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 
   " code snippets
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
+  "Plug 'SirVer/ultisnips'
+  "Plug 'honza/vim-snippets'
 
   " language server communication
   Plug 'natebosch/vim-lsc'
+  Plug 'neovim/nvim-lspconfig'
 
   " dart/flutter
   Plug 'dart-lang/dart-vim-plugin'

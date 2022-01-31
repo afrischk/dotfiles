@@ -1,5 +1,5 @@
 source ~/.config/nvim/vim-plug/plugins.vim
-call deoplete#enable()
+" call deoplete#enable()
 
 let mapleader=' '
 
@@ -8,6 +8,9 @@ lua require('modules/project')
 lua require('modules/neogit')
 lua require('modules/whichkey')
 lua require('dbg/init')
+lua require('modules/languageserver')
+lua require('modules/coq3rd')
+
 
 " editor
 syntax on
@@ -64,8 +67,8 @@ let g:lsc_auto_map = {
   \ 'GoToDefinition': '<leader>gd',
   \ 'GoToDefinitionSplit': '<leader>gD',
   \ 'FindReferences': '<leader>gr',
-  \ 'NextReference': '<C-n>',
-  \ 'PreviousReference': '<C-p>',
+  \ 'NextReference': '<leader>gn',
+  \ 'PreviousReference': '<leader>gp',
   \ 'FindImplementations': '<leader>gI',
   \ 'FindCodeActions': '<leader>ga',
   \ 'Rename': '<leader>gR',
