@@ -78,3 +78,8 @@ let g:lsc_auto_map = {
   \ 'SignatureHelp': '<leader>gm',
   \ 'Completion': 'completefunc',
 \}
+
+" coq
+"let g:coq_settings = { 'display.preview.border': [["", "NormalFloat"], ["", "NormalFloat"], ["", "NormalFloat"], [" ", "NormalFloat"], ["", "NormalFloat"], ["", "NormalFloat"], ["", "NormalFloat"], [" ", "NormalFloat"]] }
+
+let g:coq_settings = {'display.preview.border': 'single'}

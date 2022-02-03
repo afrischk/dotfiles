@@ -7,5 +7,5 @@ lsp.dartls.setup(coq.lsp_ensure_capabilities({
   }))
 
 lsp.ccls.setup(coq.lsp_ensure_capabilities({
-    cmd = {'ccls', '/usr/bin/ccls'}
+    cmd = { 'ccls' }
   }))
