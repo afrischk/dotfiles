@@ -97,21 +97,26 @@ wk.register({
   }, { prefix = "<leader>" }
 )
 
--- lsc
+-- lsp
 wk.register({
-    g = {
-      name = "code nav",
+    l = {
+      name = "language server",
       d = "to definition",
-      D = "to definition (split)",
+      D = "to declaration",
       r = "find references",
-      I = "find implementation",
-      a = "find code actions",
+      i = "find implementation",
+      h = "hover",
+      c = "code actions",
       R = "rename",
-      o = "document symbol",
-      S = "workspace symbol",
-      m = "signature help",
+      t = "type definition",
+      f = "format file",
+      --o = "document symbol",
+      --S = "workspace symbol",
+      s = "signature help",
       n = "next reference",
       p = "previous reference",
+      o = "open float",
+      l = "set loc list",
     }
   }, { prefix = "<leader>" }
 )

@@ -1,15 +1,15 @@
 source ~/.config/nvim/vim-plug/plugins.vim
-" call deoplete#enable()
 
 let mapleader=' '
 
 lua require('modules/eviline')
 lua require('modules/project')
-lua require('modules/neogit')
+"lua require('modules/neogit')
 lua require('modules/whichkey')
 lua require('dbg/init')
 lua require('modules/languageserver')
 lua require('modules/coq3rd')
+lua require('modules/treesitter')
 
 
 " editor
@@ -20,6 +20,7 @@ set expandtab
 set nu
 "Map Neovim yank's buffer to your clipboard buffer
 set clipboard+=unnamedplus
+set completeopt-=preview
 
 colorscheme tokyonight
 set termguicolors
@@ -59,24 +60,24 @@ noremap <leader>fr :FlutterRun<cr>
 noremap <leader>fd :FlutterDevices<cr>
 
 " git
-noremap <leader>g :Neogit<cr>
+"noremap <leader>g :Neogit<cr>
 
 " code naviation
 "let g:lsc_auto_map = v:true
-let g:lsc_auto_map = {
-  \ 'GoToDefinition': '<leader>gd',
-  \ 'GoToDefinitionSplit': '<leader>gD',
-  \ 'FindReferences': '<leader>gr',
-  \ 'NextReference': '<leader>gn',
-  \ 'PreviousReference': '<leader>gp',
-  \ 'FindImplementations': '<leader>gI',
-  \ 'FindCodeActions': '<leader>ga',
-  \ 'Rename': '<leader>gR',
-  \ 'ShowHover': v:true,
-  \ 'DocumentSymbol': '<leader>go',
-  \ 'WorkspaceSymbol': '<leader>gS',
-  \ 'SignatureHelp': '<leader>gm',
-  \ 'Completion': 'completefunc',
+"let g:lsc_auto_map = {
+"  \ 'GoToDefinition': '<leader>gd',
+"  \ 'GoToDefinitionSplit': '<leader>gD',
+"  \ 'FindReferences': '<leader>gr',
+"  \ 'NextReference': '<leader>gn',
+"  \ 'PreviousReference': '<leader>gp',
+"  \ 'FindImplementations': '<leader>gI',
+"  \ 'FindCodeActions': '<leader>ga',
+"  \ 'Rename': '<leader>gR',
+"  \ 'ShowHover': v:true,
+"  \ 'DocumentSymbol': '<leader>go',
+"  \ 'WorkspaceSymbol': '<leader>gS',
+"  \ 'SignatureHelp': '<leader>gm',
+"  \ 'Completion': 'completefunc',
 \}
 
 " coq

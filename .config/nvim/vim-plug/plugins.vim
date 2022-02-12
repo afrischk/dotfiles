@@ -11,10 +11,11 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
   " better syntax support
-  Plug 'sheerun/vim-polyglot'
+  "Plug 'sheerun/vim-polyglot'
 
   " auto pairs for '(' '[' '{'
-  Plug 'jiangmiao/auto-pairs'
+  "Plug 'jiangmiao/auto-pairs'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " highlight chars for movements
   Plug 'unblevable/quick-scope'
@@ -36,9 +37,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ahmedkhalf/project.nvim'
 
   " git
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'TimUntersberger/neogit'
-  Plug 'sindrets/diffview.nvim'
+  "Plug 'nvim-lua/plenary.nvim'
+  "Plug 'TimUntersberger/neogit'
+  "Plug 'sindrets/diffview.nvim'
 
   " Latex support
   Plug 'lervag/vimtex'
@@ -54,13 +55,13 @@ call plug#begin('~/.config/nvim/plugged')
   "Plug 'honza/vim-snippets'
 
   " language server communication
-  Plug 'natebosch/vim-lsc'
+  "Plug 'natebosch/vim-lsc'
   Plug 'neovim/nvim-lspconfig'
 
   " dart/flutter
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'thosakwe/vim-flutter'
-  Plug 'natebosch/vim-lsc-dart'
+  "Plug 'natebosch/vim-lsc-dart'
 
   " galaxyline
   Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
@@ -75,7 +76,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'nvim-telescope/telescope-dap.nvim'
   Plug 'rcarriga/nvim-dap-ui'
   Plug 'theHamsta/nvim-dap-virtual-text'
-  Plug 'Pocco81/DAPInstall.nvim'
+  "Plug 'Pocco81/DAPInstall.nvim'
 
 call plug#end()
 

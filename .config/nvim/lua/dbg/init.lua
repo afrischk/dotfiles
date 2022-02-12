@@ -1,32 +1,70 @@
 require('telescope').load_extension('dap')
-local dap_install = require("dap-install")
+--local dap_install = require("dap-install")
 
-dap_install.setup({
-    installation_path = "~/.local/share/nvim/debuggers",
-    verbosely_call_debuggers = true,
-  })
+--dap_install.setup({
+--    installation_path = "/home/whiz/.local/share/nvim/debuggers/",
+--    verbosely_call_debuggers = true,
+--  })
+--
+--dap_install.config(
+--  "dart",
+--  {
+--    adapters = {
+--        type = "executable",
+--        command = "node",
+--        args = {"/home/whiz/.local/share/nvim/debuggers/Dart-Code/out/dist/debug.js", "flutter"}
+--    },
+--    configurations = {
+--      {
+--        type = "dart",
+--        request = "launch",
+--        name = "Launch flutter",
+--        dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/",
+--        flutterSdkPath = "/opt/flutter",
+--        program = "${workspaceFolder}/lib/main.dart",
+--        cwd = "${workspaceFolder}",
+--      }
+--    }
+--  }
+--)
 
-dap_install.config(
-  "dart",
+
+local dap = require('dap')
+
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- adjust as needed
+  name = "lldb"
+}
+
+dap.configurations.cpp = {
   {
-    adapters = {
-        type = "executable",
-        command = "node",
-        args = {"~/.local/share/nvim/debuggers/Dart-Code/out/dist/debug.js", "flutter"}
-    },
-    configurations = {
-      {
-        type = "dart",
-        request = "launch",
-        name = "Launch flutter",
-        dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/",
-        flutterSdkPath = "/opt/flutter",
-        program = "${workspaceFolder}/lib/main.dart",
-        cwd = "${workspaceFolder}",
-      }
-    }
-  }
-)
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/bin/xor-crack-repeat', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+
+    -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+    --
+    --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+    --
+    -- Otherwise you might get the following error:
+    --
+    --    Error on launch: Failed to attach to the target process
+    --
+    -- But you should be aware of the implications:
+    -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+    runInTerminal = false,
+  },
+}
+
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
 
 -- keymappings
 require'mapx'.setup{ global = true }
@@ -35,6 +73,7 @@ nnoremap("<leader>d5", ":lua require('dap').continue()<cr><cr>")
 nnoremap("<leader>d6", ":lua require('dap').step_over()<cr>")
 nnoremap("<leader>d7", ":lua require('dap').step_into()<cr>")
 nnoremap("<leader>d8", ":lua require('dap').step_out()<cr>")
+nnoremap("<leader>d9", ":lua require('dap').terminate()<cr>")
 nnoremap("<leader>db", ":lua require('dap').toggle_breakpoint()<cr>")
 nnoremap("<leader>dc", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
 
