@@ -214,6 +214,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# change gap size
+#bindsym $mod+z gaps outer current plus 5
+#bindsym $mod+Shift+z gaps outer current minus 5
+
 #
 # Status Bar:
 #
@@ -233,9 +237,5 @@ bar {
     #    inactive_workspace #32323200 #32323200 #5c5c5c
     #}
 }
-
-
-#bindsym $mod+z gaps outer current plus 5
-#bindsym $mod+Shift+z gaps outer current minus 5
 
 include /etc/sway/config.d/*
