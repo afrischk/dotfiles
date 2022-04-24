@@ -6,9 +6,12 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-
   " theme
   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+  " range highlight
+  "Plug 'winston0410/cmd-parser.nvim'
+  "Plug 'winston0410/range-highlight.nvim'
 
   " better syntax support
   "Plug 'sheerun/vim-polyglot'
@@ -64,7 +67,8 @@ call plug#begin('~/.config/nvim/plugged')
   "Plug 'natebosch/vim-lsc-dart'
 
   " galaxyline
-  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+  "Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+  Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
 
 
@@ -77,6 +81,5 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'rcarriga/nvim-dap-ui'
   Plug 'theHamsta/nvim-dap-virtual-text'
   "Plug 'Pocco81/DAPInstall.nvim'
-
 call plug#end()
 

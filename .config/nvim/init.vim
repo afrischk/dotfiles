@@ -2,7 +2,7 @@ source ~/.config/nvim/vim-plug/plugins.vim
 
 let mapleader=' '
 
-lua require('modules/eviline')
+lua require('modules/lualine')
 lua require('modules/project')
 "lua require('modules/neogit')
 lua require('modules/whichkey')
@@ -53,11 +53,19 @@ noremap <leader>n<tab> :NvimTreeFocus<cr>
 
 " projects
 noremap <leader>pl :Telescope projects<cr>
+nnoremap <leader>tf <cmd>Telescope find_files<cr>
+nnoremap <leader>tg <cmd>Telescope live_grep<cr>
+nnoremap <leader>tb <cmd>Telescope buffers<cr>
+nnoremap <leader>th <cmd>Telescope help_tags<cr>
 
 " dart & flutter
 noremap <leader>ff :DartFmt<cr>
 noremap <leader>fr :FlutterRun<cr>
 noremap <leader>fd :FlutterDevices<cr>
+
+" move among buffers with CTRL
+map <C-j> :bnext<cr>
+map <C-k> :bprev<cr>
 
 " git
 "noremap <leader>g :Neogit<cr>

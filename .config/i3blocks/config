@@ -27,12 +27,11 @@ command=free -m | awk 'NR==2{printf "%.2f%%\n", $3*100/$2 }'
 interval=2
 label=MEM: 
 
-#[volume-pulseaudio]
-#command=$SCRIPT_DIR/volume/volume
-#interval=one
-#signal=10
-#label=VOL 
-#mixer=pulse 
+[volume-pulseaudio]
+command=$SCRIPT_DIR/volume-pulseaudio/volume-pulseaudio
+interval=persist
+SUBSCRIBE=1
+USE_ALSA_NAME=1
 
 [battery]
 command=$SCRIPT_DIR/battery2/battery2

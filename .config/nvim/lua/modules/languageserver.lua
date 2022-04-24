@@ -1,5 +1,6 @@
 local lsp = require "lspconfig"
 local coq = require "coq"
+local util = require "lspconfig.util"
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -34,13 +35,30 @@ end
 
 lsp.dartls.setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
-    cmd = { 'dart',  '/opt/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot', '--protocol=lsp' },
-    debounce_text_changes = 150,
+    cmd = {
+      'dart',
+      '/opt/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot',
+      '--protocol=lsp'
+    }
     --on_attach = require('coq').on_attach,
   }))
 
 lsp.clangd.setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
-    cmd = { 'clangd' },
-    debounce_text_changes = 150,
+    cmd = {
+      -- see clangd --help-hidden
+      "clangd",
+      --"--background-index",
+      -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
+      -- to add more checks, create .clang-tidy file in the root directory
+      -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
+      --"--clang-tidy",
+      --"--completion-style=bundled",
+      --"--cross-file-rename",
+      --"--header-insertion=iwyu",
+    },
+    --root_dir = util.root_pattern('.clangd', '.clang-tidy', '.clang-format', 'build/compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git'),
+    init_options = {
+      compilationDatabaseDirectory = "build";
+    }
   }))

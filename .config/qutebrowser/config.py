@@ -127,6 +127,6 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 c.url.searchengines = { 'DEFAULT': 'https://www.google.com/search?q={}' }
 c.url.start_pages = [ 'https://www.google.com' ]
 c.fonts.default_family = 'DejaVuSansMono Nerd Font Mono'
-c.fonts.default_size = '18pt'
-c.zoom.default = '150%'
+c.fonts.default_size = '10pt'
+c.zoom.default = '100%'
 c.downloads.location.directory = '~/downloads'
