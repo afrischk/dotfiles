@@ -13,19 +13,19 @@ command=$SCRIPT_DIR/arch-update/arch-update
 interval=once
 
 [bandwidth]
-command=$SCRIPT_DIR/bandwidth2/bandwidth2 
+command=$SCRIPT_DIR/bandwidth2/bandwidth2
 interval=persist
 label=
 
 [disk]
 command=df -h / | awk '$NF=="/"{printf "%s\n", $5}'
 interval=3
-label=SSD: 
+label=SSD:
 
 [memory]
 command=free -m | awk 'NR==2{printf "%.2f%%\n", $3*100/$2 }'
 interval=2
-label=MEM: 
+label=MEM:
 
 [volume-pulseaudio]
 command=$SCRIPT_DIR/volume-pulseaudio/volume-pulseaudio
@@ -45,3 +45,7 @@ interval=1
 [date]
 command=date '+%d/%m/%Y'
 interval=60
+
+#[shutdown]
+#full_text=
+#command=swaynag -m "Options" -f "DejaVuSansMono Nerd Font Mono 10" --background "9900ff" --button-background "ff00ff" --text "ffffff" --button-text "ffffff" --border "00ffff" --border-bottom "00ffff" --details-border-size "1" --button-border-size "1" --border-bottom-size "1" --button-padding "5" --button-gap "15" -B "Poweroff" "systemctl poweroff" -B "Hibernate" "systemctl hibernate" -B "Suspend" "systemctl suspend" -B "Reboot" "systemctl reboot"

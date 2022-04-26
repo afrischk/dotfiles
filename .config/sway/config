@@ -38,7 +38,7 @@ output eDP1 scale 2
 
 ### Idle configuration
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
+         timeout 300 'swaylock -f -i ~/.images/wallpaper/arch-wave.png' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 
@@ -81,12 +81,21 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # lock screen
-bindsym $mod+Control+l exec swaylock -i ~/.images/wallpaper/arch-wave.png
+bindsym $mod+Control+l exec swaylock -f -i ~/.images/wallpaper/arch-wave.png
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-#bindsym $mod+Shift+e exec "~/.i3/i3scripts/i3blocks-contrib/shutdown_menu/shutdown_menu"
+set $default "default"
+set $shutdown "System (e) exit, (s) suspend, (r) reboot, (p) poweroff"
+mode $shutdown {
+    bindsym e exec swaymsg exit, mode $default
+    bindsym s exec systemctl suspend, mode $default
+    bindsym r exec systemctl reboot, mode $default
+    bindsym p exec systemctl poweroff, mode $default
+    bindsym Escape  mode $default
+}
+
+bindsym $mod+Shift+e mode $shutdown
+
 # Moving around:
 #
 # Move your focus around
@@ -237,5 +246,11 @@ bar {
     #    inactive_workspace #32323200 #32323200 #5c5c5c
     #}
 }
+
+# flameshot support start
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# flameshot support end
 
 include /etc/sway/config.d/*

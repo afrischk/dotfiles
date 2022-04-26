@@ -25,6 +25,8 @@ source ~/.config/mutt/muttrc-sidebar
 # bindings
 bind index,pager B sidebar-toggle-visible
 bind editor <space> noop
+bind index,pager g group-reply
+bind index G imap-fetch-mail
 
 # change folder macros
 macro index gd "<change-folder>$postponed<enter>" "go to drafts"
