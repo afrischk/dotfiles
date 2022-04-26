@@ -2,7 +2,7 @@
 
 Feel free to use my config files. I switched from `i3gaps` to `swaywm` a few days ago.
 
-[Screenshot of my Desktop](https://media.githubusercontent.com/media/afrischk/dotfiles/master/doc/screenshot.png)
+![Screenshot of my Desktop](https://media.githubusercontent.com/media/afrischk/dotfiles/master/doc/screenshot.png)
 
 Applications I use for my Arch linux rice:
 
