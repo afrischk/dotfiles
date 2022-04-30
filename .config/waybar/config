@@ -1,0 +1,141 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 20,
+    "spacing": 3,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    // Choose the order of the modules
+    "modules-center": ["custom/launcher", "sway/workspaces", "idle_inhibitor",  "custom/updater", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "clock", "sway/mode"],
+    // Modules configuration
+
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": false,
+         "format": "{name}"
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "<span font='16'> </span>{name} <span font='14'>{icon}</span>",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>",
+        "max-length": 50
+    },
+    "idle_inhibitor": {
+        "format": "<span font='16'>{icon}</span>",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 80,
+        "spacing": 20
+    },
+    "clock": {
+        "timezone": "Europe/Berlin",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% <span font='14'></span>",
+        "tooltip": false
+    },
+    "memory": {
+      "format": "{}% <span font='14'></span>"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C <span font='14'>{icon}</span>",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        "device": "gmux_backlight",
+        "format": "{percent}% <span font='14'>{icon}</span>",
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% <span font='14'>{icon}</span>",
+        "format-charging": "{capacity}% <span font='14'></span>",
+        "format-plugged": "{capacity}% <span font='14'></span>",
+        "format-alt": "{time} <span font='14'>{icon}</span>",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format": "<span font='16'>{icon}</span>",
+        "format-wifi": "{essid} ({signalStrength}%) <span font='14'></span>",
+        "format-ethernet": "Connected <span font='14'></span>",
+        "tooltip": false,
+        "format-linked": "{ifname} (No IP) <span font='14'></span>",
+        "format-disconnected": "Disconnected <span font='14'>⚠</span>",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        //"on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% <span font='10'>{icon}</span>",
+        "format-bluetooth": "{volume}% <span font='10'>{icon}</span>",
+        "format-bluetooth-muted": "<span font='10'>{icon}</span> {format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "<span font='10'></span>",
+        "format-source-muted": "<span font='10'></span>",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pulsemixer"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 25,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause"
+    },
+    "custom/launcher":{
+        "format": "<span font='16'> </span>",
+        "on-click": "wofi --show=drun",
+        "on-click-right": "killall wofi"
+    },
+    "custom/power":{
+        "format": "<span font='18'> </span>",
+        "on-click": "systemctl poweroff",
+        "on-click-right": "killall wofi",
+        "tooltip": false
+    },
+    "custom/updater":{
+        "format": "<span font='10'></span> {}",
+        "on-click": "systemctl poweroff",
+        "exec": "yay -Qu | wc -l",
+        /*"exec-if": "[[ $(yay -Qu | wc -l) != 0 ]]",*/
+        "interval": 15,
+        "on-click": "alacritty -e yay -Syu"
+    }
+}

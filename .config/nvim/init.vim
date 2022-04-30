@@ -43,7 +43,7 @@ noremap <tab> gt
 noremap <S-tab> gT
 
 " latex
-let g:vimtex_view_general_viewer = 'mupdf'
+let g:vimtex_view_general_viewer = 'zathura'
 "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
 " NvimTree
@@ -52,7 +52,7 @@ noremap <leader>nf :NvimTreeFindFile<cr>
 noremap <leader>n<tab> :NvimTreeFocus<cr>
 
 " projects
-noremap <leader>pl :Telescope projects<cr>
+noremap <leader>pl <cmd>Telescope projects<cr>
 nnoremap <leader>tf <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope live_grep<cr>
 nnoremap <leader>tb <cmd>Telescope buffers<cr>

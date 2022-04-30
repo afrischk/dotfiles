@@ -18,15 +18,15 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run --fn "DejaVuSansMono Nerd Font Mono 10" -p "" --tb "#285577" --hb "#285577" --tf "#eeeeee" --hf "#eeeeee" --nf "#bbbbbb" --no-exec | xargs swaymsg exec --
-
+#set $menu bemenu-run --fn "DejaVuSansMono Nerd Font Mono 10" -p "" --tb "#285577" --hb "#285577" --tf "#eeeeee" --hf "#eeeeee" --nf "#bbbbbb" --no-exec | xargs swaymsg exec --
+set $menu wofi --show=drun
 
 # appearance
 default_border pixel 1
 default_floating_border pixel 1
 font pango:DejaVuSansMono Nerd Font Mono 10
-#gaps inner 1
-#gaps outer 15
+gaps inner 3
+gaps outer 3
 
 ### Output configuration
 #
@@ -85,10 +85,11 @@ bindsym $mod+Control+l exec swaylock -f -i ~/.images/wallpaper/arch-wave.png
 
 # Exit sway (logs you out of your Wayland session)
 set $default "default"
-set $shutdown "System (e) exit, (s) suspend, (r) reboot, (p) poweroff"
+set $shutdown "(e)xit (s)uspend, (h)ibernate, (r)eboot, (p)oweroff"
 mode $shutdown {
     bindsym e exec swaymsg exit, mode $default
     bindsym s exec systemctl suspend, mode $default
+    bindsym h exec systemctl hibernate, mode $default
     bindsym r exec systemctl reboot, mode $default
     bindsym p exec systemctl poweroff, mode $default
     bindsym Escape  mode $default
@@ -232,14 +233,14 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    #position top
+    #position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-    status_command SCRIPT_DIR=~/.i3/i3scripts/i3blocks-contrib i3blocks
-    font pango: DejaVuSansMono Nerd Font Mono 10
-
+    #status_command SCRIPT_DIR=~/.i3/i3scripts/i3blocks-contrib i3blocks
+    #font pango: DejaVuSansMono Nerd Font Mono 10
+    swaybar_command waybar
     #colors {
     #    statusline #ffffff
     #    background #323232
