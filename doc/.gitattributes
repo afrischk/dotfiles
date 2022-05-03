@@ -1,3 +1,0 @@
-screen-apps.png filter=lfs diff=lfs merge=lfs -text
-screen-background.png filter=lfs diff=lfs merge=lfs -text
-screen-locked.png filter=lfs diff=lfs merge=lfs -text

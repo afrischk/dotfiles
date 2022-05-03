@@ -1,0 +1,48 @@
+markup=1
+actions=1
+
+# Format
+font=DejaVuSansMono Nerd Font Mono 10
+border-color=#000000FF
+border-size=1
+#background-color=#002b36FF
+background-color=#33FAFFFF
+text-color=#080808
+format=<b>%s</b> <span>(%a)</span>\n<span color="#515151">%b</span>
+#format=<b>%s</b> <span color="#93a1a1">(%a)</span>\n%b
+
+# icons
+#icon-path=/usr/share/icons/Papirus-Adapta-Nokto-Maia:/usr/share/icons/Papirus-Maia:/usr/share/icons/Papirus
+border-radius=15
+
+# Hidden format
+[hidden]
+format=Hidden: %h [%t]
+
+[urgency=low]
+text-color=#93a1a1
+
+[urgency=low actionable]
+border-color=#93a1a1
+
+[urgency=normal actionable]
+border-color=#268bd2
+
+[urgency=critical]
+border-color=#FF00FB
+border-size=2
+
+[urgency=critical actionable]
+border-color=#FF00FB
+border-size=2
+
+#[app-name=playerctl]
+#max-icon-size=96
+
+[app-name=neomutt]
+max-icon-size=32
+
+#[app-name=i3-hint]
+#max-icon-size=48
+#format=%s\n%b
+#width=150

@@ -5,12 +5,15 @@ set mail_check = 60
 set timeout = 60
 set sort = "reverse-date-received"
 #set signature = "~/.mutt/signature"
+# do not copy to outgoing mail
 set copy = no
+# do not move read messages automatically
+set move = no
 set send_charset="utf-8"
 set edit_headers=yes
-set imap_check_subscribed
-set sidebar_visible=no
-set editor=vim
+#set imap_check_subscribed
+set editor=nvim
+set confirmappend=no
 
 # mailcap
 set mailcap_path=~/.mutt/mailcap
@@ -20,15 +23,21 @@ auto_view text/html
 source "gpg -dq ~/.config/mutt/gmail.gpg |"
 
 # sidebar
-source ~/.config/mutt/muttrc-sidebar
+source ~/.config/mutt/sidebar.muttrc
 
 # gpg
 source ~/.config/mutt/gpg.rc
 
+# theme
+source ~/.config/mutt/themes/dracula.muttrc
+
+# notification
+set new_mail_command="notify-send -a neomutt -i ~/.config/mutt/neomutt.svg 'New Email in %f' '%n new messages, %u unread.' &"
+
 # bindings
-bind index,pager B sidebar-toggle-visible
 bind editor <space> noop
 bind index,pager g group-reply
+bind index g noop
 bind index G imap-fetch-mail
 
 # change folder macros
@@ -39,11 +48,11 @@ macro index gt "<change-folder>$trash<enter>" "go to trash""
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "go to all mail"
 
 # archive mail macro
-macro index,pager \ca "<save-message>=[Gmail]/All Mail<enter><enter>" "archive mail"
+macro index,pager A ":set delete=yes<enter><save-message>=[Gmail]/All Mail<enter>:set delete=ask-yes<enter>" "archive mail"
 
 # urlscan macro
-macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
-macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro index,pager \cu "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cu "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 # goobook
 set query_command="goobook query '%s'"

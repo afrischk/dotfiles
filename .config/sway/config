@@ -85,7 +85,7 @@ bindsym $mod+Control+l exec swaylock -f -i ~/.images/wallpaper/arch-wave.png
 
 # Exit sway (logs you out of your Wayland session)
 set $default "default"
-set $shutdown "(e)xit (s)uspend, (h)ibernate, (r)eboot, (p)oweroff"
+set $shutdown "(e)xit (s)uspend (h)ibernate (r)eboot (p)oweroff"
 mode $shutdown {
     bindsym e exec swaymsg exit, mode $default
     bindsym s exec systemctl suspend, mode $default
@@ -253,5 +253,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # flameshot support end
+
+# mako
+exec mako
+# mako
 
 include /etc/sway/config.d/*

@@ -1,2 +1,9 @@
-doc/screenshot.png filter=lfs diff=lfs merge=lfs -text
 doc/screen-plain.png filter=lfs diff=lfs merge=lfs -text
+.images/wallpaper/arch-kde.png filter=lfs diff=lfs merge=lfs -text
+.images/wallpaper/arch-synth.png filter=lfs diff=lfs merge=lfs -text
+.images/wallpaper/arch-wave.png filter=lfs diff=lfs merge=lfs -text
+.images/wallpaper/arch.jpg filter=lfs diff=lfs merge=lfs -text
+.images/wallpaper/city-sunset.jpg filter=lfs diff=lfs merge=lfs -text
+.config/mutt/neomutt.svg filter=lfs diff=lfs merge=lfs -text
+doc/screen-apps.png filter=lfs diff=lfs merge=lfs -text
+doc/screen-locked.png filter=lfs diff=lfs merge=lfs -text
