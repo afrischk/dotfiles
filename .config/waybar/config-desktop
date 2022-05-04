@@ -121,7 +121,6 @@
     },
     "custom/updater":{
         "format": "<span font='24' rise='-5000'></span> {} Updates",
-        "on-click": "systemctl poweroff",
         "exec": "yay -Qu | wc -l",
         /*"exec-if": "[[ $(yay -Qu | wc -l) != 0 ]]",*/
         "interval": 15,
