@@ -107,7 +107,7 @@ color sidebar_divider default default
 # Color to give mailboxes containing flagged mail
 color sidebar_flagged color84 default
 # Color to give mailboxes containing new mail
-color sidebar_new color14 default
+color sidebar_new color117 default
 # Color to give mailboxes containing no new/flagged mail, etc.
 color sidebar_ordinary default default
 # Color to give the spool_file mailbox

@@ -11,7 +11,7 @@ set copy = no
 set move = no
 set send_charset="utf-8"
 set edit_headers=yes
-#set imap_check_subscribed
+set imap_check_subscribed
 set editor=nvim
 set confirmappend=no
 
