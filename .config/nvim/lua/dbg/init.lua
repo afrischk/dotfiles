@@ -2,7 +2,7 @@ require('telescope').load_extension('dap')
 --local dap_install = require("dap-install")
 
 --dap_install.setup({
---    installation_path = "/home/whiz/.local/share/nvim/debuggers/",
+--    installation_path = "~/.local/share/nvim/debuggers/",
 --    verbosely_call_debuggers = true,
 --  })
 --
@@ -12,7 +12,7 @@ require('telescope').load_extension('dap')
 --    adapters = {
 --        type = "executable",
 --        command = "node",
---        args = {"/home/whiz/.local/share/nvim/debuggers/Dart-Code/out/dist/debug.js", "flutter"}
+--        args = {"~/.local/share/nvim/debuggers/Dart-Code/out/dist/debug.js", "flutter"}
 --    },
 --    configurations = {
 --      {
@@ -43,7 +43,7 @@ dap.configurations.cpp = {
     type = "lldb",
     request = "launch",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/bin/xor-crack-repeat', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/xor-cipher', 'file')
     end,
     cwd = '${workspaceFolder}',
     stopOnEntry = false,
