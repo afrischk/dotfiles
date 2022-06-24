@@ -39,6 +39,9 @@ call plug#begin('~/.config/nvim/plugged')
   " prject management
   Plug 'ahmedkhalf/project.nvim'
 
+  " outline
+  Plug 'simrat39/symbols-outline.nvim'
+
   " git
   "Plug 'nvim-lua/plenary.nvim'
   "Plug 'TimUntersberger/neogit'
@@ -77,9 +80,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   " debug plugins
   Plug 'mfussenegger/nvim-dap'
-  Plug 'nvim-telescope/telescope-dap.nvim'
+  "Plug 'nvim-telescope/telescope-dap.nvim'
   Plug 'rcarriga/nvim-dap-ui'
-  Plug 'theHamsta/nvim-dap-virtual-text'
+  "Plug 'theHamsta/nvim-dap-virtual-text'
   "Plug 'Pocco81/DAPInstall.nvim'
 call plug#end()
 

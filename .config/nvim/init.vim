@@ -7,9 +7,11 @@ lua require('modules/project')
 "lua require('modules/neogit')
 lua require('modules/whichkey')
 lua require('dbg/init')
+lua require('dbg/ui')
 lua require('modules/languageserver')
 lua require('modules/coq3rd')
 lua require('modules/treesitter')
+lua require('modules/symbols-outline')
 
 
 " editor
@@ -18,6 +20,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nu
+set rnu
 "Map Neovim yank's buffer to your clipboard buffer
 set clipboard+=unnamedplus
 set completeopt-=preview
@@ -42,7 +45,7 @@ cnoreabbrev Qall qall
 noremap <tab> gt
 noremap <S-tab> gT
 
-" latex
+" vimtex
 let g:vimtex_view_general_viewer = 'zathura'
 "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
@@ -52,43 +55,33 @@ noremap <leader>nf :NvimTreeFindFile<cr>
 noremap <leader>n<tab> :NvimTreeFocus<cr>
 
 " projects
-noremap <leader>pl <cmd>Telescope projects<cr>
-nnoremap <leader>tf <cmd>Telescope find_files<cr>
-nnoremap <leader>tg <cmd>Telescope live_grep<cr>
-nnoremap <leader>tb <cmd>Telescope buffers<cr>
-nnoremap <leader>th <cmd>Telescope help_tags<cr>
+noremap <leader>fp <cmd>Telescope projects<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " dart & flutter
-noremap <leader>ff :DartFmt<cr>
-noremap <leader>fr :FlutterRun<cr>
-noremap <leader>fd :FlutterDevices<cr>
+" noremap <leader>f :DartFmt<cr>
+" noremap <leader>r :FlutterRun<cr>
+" noremap <leader>d :FlutterDevices<cr>
 
 " move among buffers with CTRL
-map <C-j> :bnext<cr>
-map <C-k> :bprev<cr>
+noremap <C-j> :bnext<cr>
+noremap <C-k> :bprev<cr>
 
-" git
-"noremap <leader>g :Neogit<cr>
-
-" code naviation
-"let g:lsc_auto_map = v:true
-"let g:lsc_auto_map = {
-"  \ 'GoToDefinition': '<leader>gd',
-"  \ 'GoToDefinitionSplit': '<leader>gD',
-"  \ 'FindReferences': '<leader>gr',
-"  \ 'NextReference': '<leader>gn',
-"  \ 'PreviousReference': '<leader>gp',
-"  \ 'FindImplementations': '<leader>gI',
-"  \ 'FindCodeActions': '<leader>ga',
-"  \ 'Rename': '<leader>gR',
-"  \ 'ShowHover': v:true,
-"  \ 'DocumentSymbol': '<leader>go',
-"  \ 'WorkspaceSymbol': '<leader>gS',
-"  \ 'SignatureHelp': '<leader>gm',
-"  \ 'Completion': 'completefunc',
-\}
-
-" coq
-"let g:coq_settings = { 'display.preview.border': [["", "NormalFloat"], ["", "NormalFloat"], ["", "NormalFloat"], [" ", "NormalFloat"], ["", "NormalFloat"], ["", "NormalFloat"], ["", "NormalFloat"], [" ", "NormalFloat"]] }
+" symbols outline
+noremap <leader>o <cmd>SymbolsOutline<cr>
 
 let g:coq_settings = {'display.preview.border': 'single'}
+
+nnoremap <leader>5 :lua require('dap').continue()<cr>
+nnoremap <leader>6 :lua require('dap').step_over()<cr>
+nnoremap <leader>7 :lua require('dap').step_into()<cr>
+nnoremap <leader>8 :lua require('dap').step_out()<cr>
+nnoremap <leader>dt :lua require('dap').terminate()<cr>
+nnoremap <leader>b :lua require('dap').toggle_breakpoint()<cr>
+nnoremap <leader>c :lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
+nnoremap <leader>duo :lua require('dapui').open()<cr>
+nnoremap <leader>duc :lua require('dapui').close()<cr>
+nnoremap <leader>du :lua require('dapui').toggle()<cr>

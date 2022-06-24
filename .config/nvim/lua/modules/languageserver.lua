@@ -5,17 +5,16 @@ local util = require "lspconfig.util"
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap('n', '<space>lo', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<space>lp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<space>ln', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<space>ll', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+--vim.api.nvim_set_keymap('n', '<space>lo', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+--vim.api.nvim_set_keymap('n', '<space>lp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+--vim.api.nvim_set_keymap('n', '<space>ln', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+--vim.api.nvim_set_keymap('n', '<space>ll', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+  --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -23,9 +22,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>la', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ll', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lc', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -48,7 +44,7 @@ lsp.clangd.setup(coq.lsp_ensure_capabilities({
     cmd = {
       -- see clangd --help-hidden
       "clangd",
-      --"--background-index",
+--      "--background-index"
       -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
       -- to add more checks, create .clang-tidy file in the root directory
       -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
@@ -57,8 +53,10 @@ lsp.clangd.setup(coq.lsp_ensure_capabilities({
       --"--cross-file-rename",
       --"--header-insertion=iwyu",
     },
-    --root_dir = util.root_pattern('.clangd', '.clang-tidy', '.clang-format', 'build/compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git'),
-    init_options = {
-      compilationDatabaseDirectory = "build";
-    }
+    -- root_dir = util.root_pattern('.clangd', '.clang-tidy', '.clang-format', 'build/compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git'),
+    root_dir = util.root_pattern('.git', '.clang-tidy', '.clang-format', 'compile_commands.json'),
+    --init_options = {
+    --compilationDatabaseDirectory = "~/git/cryptography/build/debug";
+      --compilationDatabaseDirectory = vim.fn.getcwd() .. "/build/debug"
+    --}
   }))
