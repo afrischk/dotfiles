@@ -5,13 +5,10 @@ actions=1
 font=DejaVuSansMono Nerd Font Mono 10
 border-color=#000000FF
 border-size=1
-#background-color=#002b36FF
 background-color=#2BD2FFFF
-#background-color=#33FAFFFF
-#background-image='linear-gradient(45deg, #2BD2FF 0%, #2BD2FF 52%, #2BD2FF 90%);'
 text-color=#080808
 format=<b>%s</b> <span>(%a)</span>\n<span color="#515151">%b</span>
-#format=<b>%s</b> <span color="#93a1a1">(%a)</span>\n%b
+default-timeout=5000
 
 # icons
 #icon-path=/usr/share/icons/Papirus-Adapta-Nokto-Maia:/usr/share/icons/Papirus-Maia:/usr/share/icons/Papirus
