@@ -68,9 +68,13 @@ wk.setup {
 
 -- telescope projects
 wk.register({
-    p = {
-      name = "projects",
-      l = "list projects",
+    f = {
+      name = "Find",
+      f = {"<cmd>Telescope find_files<cr>","Files"},
+      p = {"<cmd>Telescope projects<cr>","Projects"},
+      g = {"<cmd>Telescope live_grep<cr>","Live grep"},
+      b = {"<cmd>Telescope buffers<cr>","Buffers"},
+      h = {"<cmd>Telescope help_tags<cr>","Help tags"},
     },
   }, { prefix = "<leader>" }
 )
@@ -78,80 +82,61 @@ wk.register({
 -- nvimtree
 wk.register({
     n = {
-      name = "nvimtree",
-      t = "toogle tree",
-      f = "find file",
-      ["<tab>"] = "focus file",
+      name = "Nvimtree",
+      t = {"<cmd>NvimTreeToggle<cr>", "Toogle"},
+      f = {"<cmd>NvimTreeFindFile<cr>","Find file"},
+      ["<tab>"] = {"<cmd>NvimTreeFocus<cr>", "Focus file"},
     }
   }, { prefix = "<leader>" }
 )
 
--- flutter
+-- symbols
 wk.register({
-    f = {
-      name = "dart & flutter",
-      r = "run",
-      d = "devices",
-      f = "format file",
+    s = {
+      name = "Symbols",
+      o = {"<cmd>SymbolsOutline<cr>", "Outline"},
     }
   }, { prefix = "<leader>" }
 )
 
--- lsp
+-- lsp (only mapped if lnaguage server is attached)
 wk.register({
     l = {
-      name = "language server",
-      d = "to definition",
-      D = "to declaration",
-      r = "find references",
-      i = "find implementation",
-      h = "hover",
-      c = "code actions",
-      R = "rename",
-      t = "type definition",
-      f = "format file",
-      --o = "document symbol",
-      --S = "workspace symbol",
-      s = "signature help",
-      n = "next reference",
-      p = "previous reference",
-      o = "open float",
-      l = "set loc list",
+      name = "LSP",
+      d = "Goto definition",
+      D = "Goto declaration",
+      r = "References",
+      i = "Goto implementation",
+      h = "Hover",
+      c = "Code actions",
+      R = "Rename",
+      t = "Type definition",
+      f = "Format file",
+      s = "Signature help",
     }
   }, { prefix = "<leader>" }
 )
 
 -- debugger
 wk.register({
-    d = {
-      name = "debugger",
-      b = "toogle breakpoint",
-      c = "toogle conditional breakpoint",
-      ["5"] = "contiue",
-      ["6"] = "step over",
-      ["7"] = "step into",
-      ["8"] = "step out",
-      v = {
-        name="variables",
-        s = "scopes",
-        h = "hover",
-        v = "visual hover"
-      },
-      w = {
-        name = "widgets",
-        h = "hover",
-        s = "scopes"
-      },
-      t = {
-        name = "telescope",
-        c = "commands",
-        o = "configurations",
-        b = "breakpoints",
-        v = "variables",
-        f = "frames"
-      }
-
+  [""] = {
+    ["5"] = {"<cmd>lua require('dap').continue()<cr>", "Run/Continue"},
+    ["6"] = {"<cmd>lua require('dap').step_over()<cr>", "Step over"},
+    ["7"] = {"<cmd>lua require('dap').step_into()<cr>", "Step into"},
+    ["8"] = {"<cmd>lua require('dap').step_out()<cr>", "Step out"},
+    ["0"] = {"<cmd>lua require('dap').terminate()<cr>", "Terminate"},
+    b     = {"<cmd>lua require('dap').toggle_breakpoint()<cr>", "Breakpoint"},
+    c     = {"<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Cond. breakpoint"},
+    },
+  d = {
+    name = "Debug",
+    r    = {"<cmd>lua require('dap').repl.toggle()<cr>", "REPL"},
+    l    = {"<cmd>lua require('dap').run_last()<cr>", "Run last"},
+    h    = {"<cmd>lua require('dap.ui.widgets').hover()<cr>", "Hover"},
+    s    = {"<cmd>lua local swidgets = require('dap.ui.widgets'); local swindow = swidgets.centered_float(swidgets.scopes)<cr>", "Scopes"},
+    f    = {"<cmd>lua local fwidgets = require('dap.ui.widgets'); local fwindow = fwidgets.centered_float(fwidgets.frames)<cr>", "Frames"},
+    e    = {"<cmd>lua local ewidgets = require('dap.ui.widgets'); local ewindow = ewidgets.centered_float(ewidgets.expression)<cr>", "Expressions"},
+    t    = {"<cmd>lua local twidgets = require('dap.ui.widgets'); local twindow = twidgets.centered_float(twidgets.expression)<cr>", "Threads"},
     }
   }, { prefix = "<leader>" }
 )
-

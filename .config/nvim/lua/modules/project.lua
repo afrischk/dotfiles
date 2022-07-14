@@ -1,16 +1,5 @@
 require('telescope').load_extension('projects')
 
-vim.g.nvim_tree_respect_buf_cwd = 1
-
-require("nvim-tree").setup({
-  update_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_cwd = true
-  },
-})
-
-
 local project = require("project_nvim")
 project.setup {
 
@@ -46,6 +35,5 @@ project.setup {
   -- Path where project.nvim will store the project history for use in
   -- telescope
   datapath = vim.fn.stdpath("data"),
-
 }
 

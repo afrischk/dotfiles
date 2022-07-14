@@ -34,7 +34,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'kyazdani42/nvim-tree.lua'
 
   " easy lua key mapping
-  Plug 'b0o/mapx.nvim'
+  "Plug 'b0o/mapx.nvim'
 
   " prject management
   Plug 'ahmedkhalf/project.nvim'
@@ -65,8 +65,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neovim/nvim-lspconfig'
 
   " dart/flutter
-  Plug 'dart-lang/dart-vim-plugin'
-  Plug 'thosakwe/vim-flutter'
+  "Plug 'dart-lang/dart-vim-plugin'
+  "Plug 'thosakwe/vim-flutter'
   "Plug 'natebosch/vim-lsc-dart'
 
   " galaxyline
@@ -81,7 +81,7 @@ call plug#begin('~/.config/nvim/plugged')
   " debug plugins
   Plug 'mfussenegger/nvim-dap'
   "Plug 'nvim-telescope/telescope-dap.nvim'
-  Plug 'rcarriga/nvim-dap-ui'
+  "Plug 'rcarriga/nvim-dap-ui'
   "Plug 'theHamsta/nvim-dap-virtual-text'
   "Plug 'Pocco81/DAPInstall.nvim'
 call plug#end()

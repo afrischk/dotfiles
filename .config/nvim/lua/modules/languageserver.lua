@@ -13,10 +13,6 @@ local opts = { noremap=true, silent=true }
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  --vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -36,27 +32,12 @@ lsp.dartls.setup(coq.lsp_ensure_capabilities({
       '/opt/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot',
       '--protocol=lsp'
     }
-    --on_attach = require('coq').on_attach,
   }))
 
 lsp.clangd.setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
     cmd = {
-      -- see clangd --help-hidden
       "clangd",
---      "--background-index"
-      -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
-      -- to add more checks, create .clang-tidy file in the root directory
-      -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
-      --"--clang-tidy",
-      --"--completion-style=bundled",
-      --"--cross-file-rename",
-      --"--header-insertion=iwyu",
     },
-    -- root_dir = util.root_pattern('.clangd', '.clang-tidy', '.clang-format', 'build/compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git'),
     root_dir = util.root_pattern('.git', '.clang-tidy', '.clang-format', 'compile_commands.json'),
-    --init_options = {
-    --compilationDatabaseDirectory = "~/git/cryptography/build/debug";
-      --compilationDatabaseDirectory = vim.fn.getcwd() .. "/build/debug"
-    --}
   }))
