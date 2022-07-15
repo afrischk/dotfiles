@@ -19,6 +19,12 @@ set confirmappend=no
 set mailcap_path=~/.mutt/mailcap
 auto_view text/html
 
+# alias
+set alias_file = "~/.mutt/aliases"
+set sort_alias = alias
+set reverse_alias = yes
+source $alias_file
+
 # gmail access
 source "gpg -dq ~/.config/mutt/gmail.gpg |"
 
@@ -54,7 +60,7 @@ macro index,pager A ":set delete=yes<enter><save-message>=[Gmail]/All Mail<enter
 macro index,pager \cu "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cu "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
-# goobook
-set query_command="goobook query '%s'"
-macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
-bind editor <Tab> complete-query
+# goobook (broken too often)
+#set query_command="goobook query '%s'"
+#macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+#bind editor <Tab> complete-query
