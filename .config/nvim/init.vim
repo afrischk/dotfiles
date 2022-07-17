@@ -12,6 +12,7 @@ lua require('modules/coq3rd')
 lua require('modules/treesitter')
 lua require('modules/symbols-outline')
 lua require('modules/nvimtree')
+lua require('modules/todo')
 
 
 " editor

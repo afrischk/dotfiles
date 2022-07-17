@@ -113,6 +113,10 @@ wk.register({
       t = "Type definition",
       f = "Format file",
       s = "Signature help",
+      o = {"<cmd>lua vim.diagnostic.open_float()<cr>", "Diagnostic open float"},
+      p = {"<cmd>lua vim.diagnostic.goto_prev()<cr>", "Diagnostic goto prev"},
+      n = {"<cmd>lua vim.diagnostic.goto_next()<cr>", "Diagnostic goto next"},
+      l = {"<cmd>lua vim.diagnostic.setloclist()<cr>", "Diagnostic loclist"}
     }
   }, { prefix = "<leader>" }
 )
